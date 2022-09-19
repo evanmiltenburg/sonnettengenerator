@@ -1,0 +1,19 @@
+{% extends "layout.htm" %}
+{% block content %}
+{% if selected_words %}
+Eerder gekozen rijmwoorden: {{selected_words}}.
+{% endif %}
+
+<form style="padding: 10px;" id='choose-rhyme' method='post' action='/zelfbouw/'>
+Kies een rijmwoord: <br/>
+{% for suggestion in suggestions %}
+<input type="radio" id="{{suggestion}}" name="selectie" value="{{suggestion}}"><label for="{{suggestion}}">{{suggestion}}</label><br/>
+{% endfor %}
+<input type="hidden" id="letter" name="letter" value="{{current_letter}}">
+<p><button name="step" value="n" type="submit">Volgende stap!</button></p>
+</form>
+
+
+
+
+{% endblock %}

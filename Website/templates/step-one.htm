@@ -1,0 +1,43 @@
+{% extends "layout.htm" %}
+{% block content %}
+
+<p>Via deze pagina kun je in meerdere stappen je eigen sonnet maken. Het proces begint met het specificeren van dezelfde variabelen als bij de <a href="/random">Generator-pagina</a>, maar daarna kun je ook zelf de rijmwoorden kiezen.</p>
+
+<form id='inputvariables' method='post' action='/zelfbouw/'>
+<ol>
+<li>Kies de bron: <br/>
+<input type="radio" id="dbnl" name="corpus" value="dbnl"><label for="dbnl">DBNL</label><br/>
+<input type="radio" id="wikipedia" name="corpus" value="wikipedia"><label for="wikipedia">Wikipedia</label><br/>
+<input type="radio" id="combination" name="corpus" value="combination" checked><label for="wikipedia">Combinatie</label><br/>
+</li>
+
+<li style="padding-top: 10px;">Kies het aantal lettergrepen: <br/>
+<input type="radio" id="syll9" name="syllables" value="9"><label for="syll9">9</label><br/>
+<input type="radio" id="syll10" name="syllables" value="10"><label for="syll10">10</label><br/>
+<input type="radio" id="syllall" name="syllables" value="all" checked><label for="syllall">9 of 10</label><br/>
+</li>
+
+<li style="padding-top: 10px;">Kies het patroon:<br/>
+<input type="radio" id="pattern1" name="pattern" value="abba abba cdc dcd" checked>
+    <label for="pattern1">abba abba cdc dcd</label><br/>
+<input type="radio" id="pattern2" name="pattern" value="abba abba cde cde">
+    <label for="pattern2">abba abba cde cde</label><br/>
+<input type="radio" id="pattern3" name="pattern" value="abba baab cdc dcd">
+    <label for="pattern3">abba baab cdc dcd</label><br/>
+<input type="radio" id="pattern4" name="pattern" value="abba baab cde cde">
+    <label for="pattern4">abba baab cde cde</label><br/>
+<input type="radio" id="pattern5" name="pattern" value="abba cddc efe fef">
+    <label for="pattern5">abba cddc efe fef</label><br/>
+<input type="radio" id="pattern6" name="pattern" value="abab cdcd efef gg">
+    <label for="pattern6">abab cdcd efef gg</label><br/>
+<input type="radio" id="pattern7" name="pattern" value="abab bcbc cdcd ee">
+    <label for="pattern7">abab bcbc cdcd ee</label><br/>
+</li>
+</ol>
+<p><button name="step" value="1" type="submit">Rijmwoorden selecteren</button></p>
+</form>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout.htm" %}
+{% block content %}
+
+<table style="padding: 10px;  border: 1px solid;">
+<tr><td><b>Willekeurig sonnet</b> <div style="font-size:10px;display:inline;">[<a style="color:#C24E27;" href="/perma/{{sonnet_id}}">{{sonnet_id}}</a>]</div></td></tr>
+<tr><td></td></tr>
+{% for line, text, url in sonnet %}
+    <tr><td class="tooltip"><a href="{{url}}">{{line}}</a><span class="tooltiptext">{{text}}</span></td></tr>
+{% endfor %}
+</table>
+
+{% endblock %}

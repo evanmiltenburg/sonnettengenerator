@@ -1,0 +1,79 @@
+{% extends "layout.htm" %}
+{% block content %}
+
+<p>Hier kun je de functionaliteit en de data alvast een beetje leren kennen. Klik op de knop hieronder om je eerste eigen sonnet te maken. Je kunt zelf aanpassen welke data er gebruikt wordt, hoeveel lettergrepen iedere regel heeft, en wat het rijmschema moet zijn van het sonnet. Bij <a href="/zelf">Zelf maken</a> zijn er veel meer opties.</p>
+
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row; height: 100px;">
+            <div style="width: 40%; display: table-cell; background: white;">
+                <form id='inputvariables' method='post' action='/random/'>
+<p><button name="name" value="value" type="submit">Maak een sonnet!</button></p>
+<ol>
+<li>Kies de bron: <br/>
+<input type="radio" id="dbnl" name="corpus" value="dbnl" 
+       {% if corpus == "dbnl" %}checked{% else %}{% endif %}>
+    <label for="dbnl">DBNL</label><br/>
+<input type="radio" id="wikipedia" name="corpus" value="wikipedia" 
+       {% if corpus == "wikipedia" %}checked{% else %}{% endif %}>
+    <label for="wikipedia">Wikipedia</label><br/>
+<input type="radio" id="combination" name="corpus" value="combination" 
+       {% if corpus == "combination" %}checked{% else %}{% endif %}>
+    <label for="wikipedia">Combinatie</label><br/>
+</li>
+
+<li style="padding-top: 10px;">Kies het aantal lettergrepen: <br/>
+<input type="radio" id="syll9" name="syllables" value="9" 
+       {% if subset=="9" %}checked{% else %}{% endif %}>
+    <label for="syll9">9</label><br/>
+<input type="radio" id="syll10" name="syllables" value="10" 
+       {% if subset=="10" %}checked{% else %}{% endif %}>
+    <label for="syll10">10</label><br/>
+<input type="radio" id="syllall" name="syllables" value="all" 
+       {% if subset=="all" %}checked{% else %}{% endif %}>
+    <label for="syllall">9 of 10</label><br/>
+</li>
+
+<li style="padding-top: 10px;">Kies het patroon:<br/>
+<input type="radio" id="pattern1" name="pattern" value="abba abba cdc dcd" 
+       {% if pattern == "abba abba cdc dcd" %}checked{% else %}{% endif %}>
+    <label for="pattern1">abba abba cdc dcd</label><br/>
+<input type="radio" id="pattern2" name="pattern" value="abba abba cde cde" 
+       {% if pattern == "abba abba cde cde" %}checked{% else %}{% endif %}>
+    <label for="pattern2">abba abba cde cde</label><br/>
+<input type="radio" id="pattern3" name="pattern" value="abba baab cdc dcd" 
+       {% if pattern == "abba baab cdc dcd" %}checked{% else %}{% endif %}>
+    <label for="pattern3">abba baab cdc dcd</label><br/>
+<input type="radio" id="pattern4" name="pattern" value="abba baab cde cde" 
+       {% if pattern == "abba baab cde cde" %}checked{% else %}{% endif %}>
+    <label for="pattern4">abba baab cde cde</label><br/>
+<input type="radio" id="pattern5" name="pattern" value="abba cddc efe fef" 
+       {% if pattern == "abba cddc efe fef" %}checked{% else %}{% endif %}>
+    <label for="pattern5">abba cddc efe fef</label><br/>
+<input type="radio" id="pattern6" name="pattern" value="abab cdcd efef gg" 
+       {% if pattern == "abab cdcd efef gg" %}checked{% else %}{% endif %}>
+    <label for="pattern6">abab cdcd efef gg</label><br/>
+<input type="radio" id="pattern7" name="pattern" value="abab bcbc cdcd ee" 
+       {% if pattern == "abab bcbc cdcd ee" %}checked{% else %}{% endif %}>
+    <label for="pattern7">abab bcbc cdcd ee</label><br/>
+</li>
+</ol>
+
+</form>
+            </div>
+            <div style="display: table-cell; background: white;"> 
+                {% if sonnet %}
+<table style="padding: 10px;  border: 1px solid;">
+<tr><td><b>Willekeurig sonnet</b> <div style="font-size:10px;display:inline;">[<a style="color:#C24E27;" href="/perma/{{sonnet_id}}">{{sonnet_id}}</a>]</div></td></tr>
+<tr><td></td></tr>
+{% for line, text, url in sonnet %}
+    <tr><td class="tooltip"><a href="{{url}}">{{line}}</a><span class="tooltiptext">{{text}}</span></td></tr>
+{% endfor %}
+</table>
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
